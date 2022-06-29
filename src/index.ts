@@ -18,7 +18,7 @@ export type PuppeteerOptions = LaunchOptions & BrowserLaunchArgumentOptions & Br
 
 
 // Functions:
-const proxyFetch = async ({
+const fetch = async ({
   baseURL,
   targetURL,
   waitFor = 5000,
@@ -63,4 +63,4 @@ const proxyFetch = async ({
 
 
 // Exports:
-export default proxyFetch
+export default fetch

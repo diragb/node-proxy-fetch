@@ -1,8 +1,8 @@
-# proxy-fetch
+# node-proxy-fetch
 
-[![npm](https://img.shields.io/badge/npm-proxy--fetch-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/proxy-fetch)
-[![npm version](https://img.shields.io/npm/v/proxy-fetch.svg?style=flat-square)](https://www.npmjs.com/package/proxy-fetch)
-[![npm downloads](https://img.shields.io/npm/dm/proxy-fetch.svg?style=flat-square)](https://www.npmjs.com/package/proxy-fetch)
+[![npm](https://img.shields.io/badge/npm-node--proxy--fetch-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/node-proxy-fetch)
+[![npm version](https://img.shields.io/npm/v/node-proxy-fetch.svg?style=flat-square)](https://www.npmjs.com/package/node-proxy-fetch)
+[![npm downloads](https://img.shields.io/npm/dm/node-proxy-fetch.svg?style=flat-square)](https://www.npmjs.com/package/node-proxy-fetch)
 [![sponsors](https://img.shields.io/github/sponsors/diragb)](https://github.com/sponsors/diragb)
 
 Fetch web content behind firewall.
@@ -10,14 +10,14 @@ Fetch web content behind firewall.
 # Inspiration
 Fetching web content from other websites from client-side usually either results in a CORS or a `403 Forbidden` error. A typical workaround for this is to fetch it via a proxy server, but this is also usually blocked due to *"Are you a human?"* checks.
 
-`proxy-fetch` uses Puppeteer with `headless: false` to get the actual page content, grabs the generated HTML, transforms and serves it.
+`node-proxy-fetch` uses Puppeteer with `headless: false` to get the actual page content, grabs the generated HTML, transforms and serves it.
 
 # Usage
 In your proxy server code, assuming you're using Express:
 ```ts
 // Packages:
 import express from 'express'
-import proxyFetch from 'proxy-fetch'
+import fetch from 'node-proxy-fetch'
 
 
 // Constants:
@@ -26,7 +26,7 @@ const app = express()
 
 // Functions:
 app.get('/', async (req, res) => {
-  const content = await proxyFetch({
+  const content = await fetch({
     baseURL: 'https://www.npmjs.com/',
     targetURL: 'https://www.npmjs.com/package/solid-custom-scrollbars'
   })

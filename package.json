@@ -1,5 +1,5 @@
 {
-  "name": "proxy-fetch",
+  "name": "node-proxy-fetch",
   "version": "0.1.0",
   "description": "Fetch web content behind firewall.",
   "main": "dist/index.js",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diragb/proxy-fetch"
+    "url": "https://github.com/diragb/node-proxy-fetch"
   },
   "bugs": {
-    "url": "https://github.com/diragb/proxy-fetch/issues"
+    "url": "https://github.com/diragb/node-proxy-fetch/issues"
   },
-  "homepage": "https://github.com/diragb/proxy-fetch#readme",
+  "homepage": "https://github.com/diragb/node-proxy-fetch#readme",
   "scripts": {
     "prebuild": "npm run clean",
     "clean": "rimraf dist/",
@@ -24,7 +24,14 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts"
   },
-  "keywords": ["proxy", "fetch", "cors", "403", "axios"],
+  "keywords": [
+    "node",
+    "proxy",
+    "fetch",
+    "cors",
+    "403",
+    "axios"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.0.0",
