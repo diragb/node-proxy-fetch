@@ -1,6 +1,6 @@
 {
   "name": "node-proxy-fetch",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Fetch web content behind a firewall.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

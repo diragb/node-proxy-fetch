@@ -27,7 +27,7 @@ const app = express()
 // Functions:
 app.get('/', async (req, res) => {
   const content = await fetch({
-    baseURL: 'https://www.npmjs.com/',
+    baseURL: 'https://www.npmjs.com',
     targetURL: 'https://www.npmjs.com/package/solid-custom-scrollbars'
   })
   res.send(content)
@@ -35,6 +35,12 @@ app.get('/', async (req, res) => {
 
 app.listen(3000)
 ```
+
+## Usage with Heroku
+If you're using this package with [Heroku](https://www.heroku.com), be sure to add [`puppeteer-heroku-buildpack`](https://github.com/jontewks/puppeteer-heroku-buildpack) as your app's buildpack.
+
+## Usage with AWS
+If you're using this package with [AWS](https://aws.amazon.com), check out this [guide](https://oxylabs.io/blog/puppeteer-on-aws-lambda).
 
 # API
 ## baseURL
@@ -58,7 +64,7 @@ The number of milliseconds to wait for before scraping the HTML. This gives time
 Whether to transform relative paths with the `baseURL` or not.
 
 ## puppeteerOptions
-`PuppeteerOptions` - **OPTIONAL**
+`Parial<PuppeteerOptions>` - **OPTIONAL**
 
 Additional parameters for Puppeteer.
 
