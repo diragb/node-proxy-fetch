@@ -29,7 +29,7 @@ const fetch = async ({
   targetURL: string
   waitFor?: number
   transformExternalLinks?: boolean
-  puppeteerOptions?: PuppeteerOptions
+  puppeteerOptions?: Partial<PuppeteerOptions>
 }) => {
   try {
     let pageContent = ''
