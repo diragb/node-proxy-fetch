@@ -1,6 +1,6 @@
 {
   "name": "node-proxy-fetch",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Fetch web content behind a firewall.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,12 +35,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "@types/random-useragent": "^0.3.1",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
-    "puppeteer": "^14.4.1"
+    "puppeteer": "^14.4.1",
+    "random-useragent": "^0.5.0"
   }
 }

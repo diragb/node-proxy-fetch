@@ -10,7 +10,7 @@ Fetch web content behind a firewall.
 # Inspiration
 Fetching web content from other websites from client-side usually either results in a CORS or a `403 Forbidden` error. A typical workaround for this is to fetch it via a proxy server, but this is also usually blocked due to *"Are you a human?"* checks.
 
-**node-proxy-fetch** uses Puppeteer with `headless: false` to get the actual page content, grabs the generated HTML, transforms and serves it.
+**node-proxy-fetch** uses Puppeteer to get the actual page content, grabs the generated HTML, transforms and serves it.
 
 # Usage
 In your proxy server code, assuming you're using Express:

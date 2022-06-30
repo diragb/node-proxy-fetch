@@ -8,6 +8,7 @@ import puppeteer, {
 import cheerio from 'cheerio'
 import { convertAnchorHrefs } from './utils/convertAnchorHrefs'
 import { convertImageSrcs } from './utils/convertImageSrcs'
+import randomUseragent from 'random-useragent'
 
 
 // Typescript:
@@ -34,7 +35,6 @@ const fetch = async ({
   try {
     let pageContent = ''
     const browser = await puppeteer.launch({
-      headless: false,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -44,6 +44,7 @@ const fetch = async ({
       ...puppeteerOptions
     })
     const page = await browser.newPage()
+    await page.setUserAgent(randomUseragent.getRandom())
     await page.goto(targetURL)
     page.waitForTimeout(waitFor)
     pageContent = await page.content()
