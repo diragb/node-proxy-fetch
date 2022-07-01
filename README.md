@@ -26,11 +26,22 @@ const app = express()
 
 // Functions:
 app.get('/', async (req, res) => {
-  const content = await fetch({
-    baseURL: 'https://www.npmjs.com',
-    targetURL: 'https://www.npmjs.com/package/solid-custom-scrollbars'
+  const webpage = await fetch({
+    targetURL: 'https://www.npmjs.com',
+    type: 'DOCUMENT',
+    puppeteerOptions: {
+      baseURL: 'https://www.npmjs.com/package/solid-custom-scrollbars'
+    }
   })
-  res.send(content)
+  res.send(webpage)
+})
+
+app.get('/image', async (req, res) => {
+  const image = (await fetch({
+    targetURL: 'https://picsum.photos/1000',
+    type: 'BLOB'
+  })).data
+  res.send(image)
 })
 
 app.listen(3000)
@@ -40,33 +51,58 @@ app.listen(3000)
 If you're using this package with [Heroku](https://www.heroku.com), be sure to add [`puppeteer-heroku-buildpack`](https://github.com/jontewks/puppeteer-heroku-buildpack) as your app's buildpack.
 
 ## Usage with AWS
-If you're using this package with [AWS](https://aws.amazon.com), check out this [guide](https://oxylabs.io/blog/puppeteer-on-aws-lambda).
+If you want to use this package with [AWS](https://aws.amazon.com), try out the sister package [`aws-proxy-fetch`](https://www.npmjs.com/package/aws-proxy-fetch), or check out this [guide](https://oxylabs.io/blog/puppeteer-on-aws-lambda).
 
 # API
-## baseURL
-`string`
-
-The base URL with the pattern `protocol://domain.tld`. All relative paths in the fetched HTML is replaced with this.
 
 ## targetURL
 `string`
 
 The target URL that you want to fetch.
 
-## waitFor
-`number` - **OPTIONAL**
+## type
+`FetchType = 'DOCUMENT' | 'BLOB'`
 
-The number of milliseconds to wait for before scraping the HTML. This gives time for the Javascript to run on the page.
+The type of content you are fetching.
 
-## transformExternalLinks
-`boolean` - **OPTIONAL**
+## axiosOptions
+`AxiosOptions` - **OPTIONAL**
 
-Whether to transform relative paths with the `baseURL` or not.
+Options for Axios, only used when `type` is `BLOB`.
+
+### config
+`AxiosRequestConfig<any>` - **OPTIONAL**
+
+### headers
+`AxiosRequestHeaders` - **OPTIONAL**
 
 ## puppeteerOptions
-`Parial<PuppeteerOptions>` - **OPTIONAL**
+`PuppeteerOptions` - **OPTIONAL**
 
-Additional parameters for Puppeteer.
+### baseURL
+`string`
+
+The base URL with the pattern `protocol://domain.tld`. All relative paths in the fetched HTML is replaced with this.
+
+### waitFor
+`number` - **OPTIONAL**
+
+The number of milliseconds to wait for before scraping the HTML. This gives time for the Javascript to run on the page. Defaults to `5000`.
+
+### transformExternalLinks
+`boolean` - **OPTIONAL**
+
+Whether to transform relative paths with the `baseURL` or not. Defaults to `true`.
+
+### launchOptions
+`Partial<PuppeteerOptions>` - **OPTIONAL**
+
+Launch options for Puppeteer.
+
+### launchArguments
+`string[]` - **OPTIONAL**
+
+Launch arguments for Puppeteer.
 
 # License
 MIT

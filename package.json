@@ -1,6 +1,6 @@
 {
   "name": "node-proxy-fetch",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Fetch web content behind a firewall.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,6 +25,8 @@
     "dev": "ts-node src/index.ts"
   },
   "keywords": [
+    "iframe",
+    "heroku",
     "node",
     "proxy",
     "fetch",
